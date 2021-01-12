@@ -1,0 +1,40 @@
+.seat {
+  width: 5rem;
+  height: 5rem;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  color: white;
+}
+
+.seat:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.cancelled {
+  background: green;
+  border: 1px solid green;
+}
+
+.pending {
+  background: orange;
+  border: 1px solid orange;
+}
+
+.confirmed {
+  background: red;
+  border: 1px solid red;
+}
+
+.selected {
+  opacity: 0.6;
+  position: relative;
+}
+.selected:after {
+  content: "selected";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: blue;
+}

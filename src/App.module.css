@@ -1,0 +1,16 @@
+.seats {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  align-items: center;
+}
+
+.body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error {
+  color: #ff4400;
+}
