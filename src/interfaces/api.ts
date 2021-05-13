@@ -5,5 +5,10 @@ export interface PostReservationInput {
 }
 
 export interface PostPaymentInput {
-  reservation_id: string;
+  reservationId: string;
+}
+
+export interface DeletePaymentInput {
+  reservationId: string;
+  reason: string;
 }
