@@ -71,6 +71,7 @@ export function usePayment() {
 
   useEffect(() => {
     if (!reservationId) return;
+
     async function pool() {
       for (let i = 0; i < 10; i++) {
         await delay(i * 1000 + Math.random() * 500);
@@ -92,7 +93,10 @@ export function usePayment() {
     pool();
   }, [reservationId]);
 
-  async function confirmPayment({ reservationId }: { reservationId: string }) {
+  async function confirmPayment({ reservationId }: { reservationId?: string }) {
+    if (!reservationId)
+      throw new Error("confirmPaymentError: reservationId is required");
+
     try {
       const payment = await postPayment({ reservationId });
       setPayment(payment);
@@ -108,9 +112,11 @@ export function usePayment() {
     reservationId,
     reason,
   }: {
-    reservationId: string;
+    reservationId?: string;
     reason: string;
   }) {
+    if (!reservationId)
+      throw new Error("cancelPaymentError: reservationId is required");
     try {
       const payment = await deletePayment({ reservationId, reason });
       setPayment(payment);

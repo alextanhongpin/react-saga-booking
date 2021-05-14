@@ -3,7 +3,6 @@ import styles from "./App.module.css";
 
 // Interfaces.
 import type Seat from "interfaces/seat";
-import type Reservation from "interfaces/reservation";
 
 // Components.
 import SeatItem from "components/Seat";
@@ -73,7 +72,7 @@ function App() {
 
   useEffect(() => {
     if (reservation) {
-      setReservationId(reservation.id);
+      setReservationId(reservation?.id);
     }
   }, [setReservationId, reservation]);
 
@@ -117,7 +116,7 @@ function App() {
   };
 
   const handleConfirmPayment = async () => {
-    const success = await confirmPayment({ reservationId: reservation.id });
+    const success = await confirmPayment({ reservationId: reservation?.id });
     if (success) {
       window.alert("Payment completed! Redirecting to home");
       window.location.reload();
@@ -126,11 +125,11 @@ function App() {
 
   const handleCancelPayment = async () => {
     const success = await cancelPayment({
-      reservationId: reservation.id,
+      reservationId: reservation?.id,
       reason: "user cancelled payment",
     });
     if (success) {
-      setReservation(null);
+      setReservation(undefined);
       setScreens(initScreens("booking"));
     }
   };

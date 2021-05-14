@@ -7,6 +7,6 @@ export default interface Reservation {
   price: string;
   status: ReservationStatus;
   reason: string;
-  created_at: string;
-  updated_at: string;
+  createdAt: string;
+  updatedAt: string;
 }

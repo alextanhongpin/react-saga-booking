@@ -19,7 +19,7 @@ export default function View({ seconds = 60, onCompleted }: Props) {
 
   useEffect(() => {
     function loop() {
-      setTimer(seconds => {
+      setTimer((seconds) => {
         if (!seconds) {
           window.clearInterval(interval);
           onCompleted(true);
@@ -32,7 +32,7 @@ export default function View({ seconds = 60, onCompleted }: Props) {
     return () => {
       window.clearInterval(interval);
     };
-  }, []);
+  }, [onCompleted]);
 
   return <div>{formatTime(timer)}</div>;
 }
